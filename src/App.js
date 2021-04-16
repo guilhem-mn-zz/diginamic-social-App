@@ -1,10 +1,12 @@
+// TODO: créer une navbar etc
+
 import React from 'react';
-import logo from './logo.svg';
 import './App.css';
+import Login from './component/Login';
 
 function App() {
   return (
-    <div>Mon Réseau Social</div>
+    <Login></Login>
   );
 }
 
