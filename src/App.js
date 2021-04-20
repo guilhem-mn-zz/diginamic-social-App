@@ -2,11 +2,18 @@
 
 import React from 'react';
 import './App.css';
-import Navbar from './component/Navbar';
+import Header from './component/Header';
+import Foot from './component/Foot';
+import './index.css';
+import FriendList from './component/FriendList';
 
 function App() {
   return (
-    <Navbar/>
+    <div id="root">
+    <Header></Header>
+    <FriendList></FriendList>
+    <Foot></Foot>
+    </div>
   );
 }
 

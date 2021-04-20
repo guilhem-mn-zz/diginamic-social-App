@@ -1,3 +1,4 @@
+@import '~antd/dist/antd.css';
 .App {
   text-align: center;
 }
@@ -36,4 +37,15 @@
   100% {
     transform: translateY(0px);
   }
+}
+
+#Navbar {
+  /*background-color: #1FC58E;
+  /* #FAE62D / #191414 */
+}
+.ant-layout-sider, .ant-layout-sider-trigger, .ant-layout-content, .ant-layout {
+  background-color: white !important;
+}
+.ant-layout-sider-trigger .anticon {
+  color: #333;
 }
