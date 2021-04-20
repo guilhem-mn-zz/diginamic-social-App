@@ -79,7 +79,7 @@ class FriendList extends React.Component {
                         <Menu.Item
                             key="1"
                             icon={<FormOutlined/>}>
-                            Posts
+                            Publier
                         </Menu.Item>
                         <Menu.Item
                             key="2"
