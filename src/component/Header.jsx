@@ -20,10 +20,12 @@ Si on possède le token et que le login est réussi, on affiche le bouton se dé
 */
 
 import React from 'react'
+//import { useSelector } from 'react-redux';
 import { PageHeader, Input, Button, Row, Col, Divider } from 'antd';
 import { MailOutlined, EyeInvisibleOutlined } from '@ant-design/icons';
 
 const Header = () => {
+  //const token = useSelector(selectToken);
   return (
     <div id="Navbar">
       <Row justify="start">
@@ -65,23 +67,37 @@ export default Header;
 
 /*
 
-<PageHeader
-    className="site-page-header"
-    title="Socialize"
-    extra={[
-        <Input 
-          placeholder="e-mail ou identifiant"
-          prefix={<UserOutlined className="site-form-item-icon" />}
-        />,
-        <Input 
-          placeholder="mot de passe"
-          prefix={<EyeInvisibleOutlined className="site-form-item-icon" />}
-        />,
-        <Button 
-          shape="round">
-          Se connecter
-        </Button>,
-      ]}>
-    </PageHeader>
+<div id="Navbar">
+      <Row justify="start">
+        <Col span={4}>
+
+          <PageHeader
+            className="site-page-header"
+            title="Socialize"
+            extra={[
+              <Input 
+                placeholder=" Votre e-mail"
+                type="email"
+                prefix={<MailOutlined className="site-form-item-icon" />}
+              />,
+              <Input 
+                placeholder=" Votre mot-de-passe"
+                type="password"
+                prefix={<EyeInvisibleOutlined className="site-form-item-icon" />}
+              />,
+              <Button 
+                shape="round">
+                Se connecter
+              </Button>,
+              <Button 
+                shape="round">
+                S'inscrire
+              </Button>,
+            ]}>
+            </PageHeader>
+        </Col>
+        <Divider />
+      </Row>
+    </div>
 
     */
