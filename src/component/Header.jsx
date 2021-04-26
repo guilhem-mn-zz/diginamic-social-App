@@ -20,41 +20,71 @@ Si on possède le token et que le login est réussi, on affiche le bouton se dé
 */
 
 import React from 'react'
-//import { useSelector } from 'react-redux';
-import { PageHeader, Input, Button, Row, Col, Divider } from 'antd';
-import { MailOutlined, EyeInvisibleOutlined } from '@ant-design/icons';
+import { PageHeader, Button, Row, Col, Divider } from 'antd';
 
 const Header = () => {
-  //const token = useSelector(selectToken);
+  const dispatch = useDispatch();
+  const token = useSelector(getToken);
+  const me = useSelector(getMe);
+  let history = useHistory();
+
+  const handleDisconnect = async () => {
+    const raw = await fetch(`${process.env.REACT_APP_API_URL}/disconnect`, {
+      headers: { Authorization: `Bearer ${token}` },
+    });
+    await raw.json();
+    dispatch(disconnect());
+    localStorage.removeItem("token");
+    history.push("/");
+  };
+
+  const handleLogin = async () => {
+    
+  }
+  const handleRegister = async () => {
+
+  }
+
+
   return (
     <div id="Navbar">
       <Row justify="start">
         <Col span={4}>
-
-          <PageHeader
-            className="site-page-header"
-            title="Socialize"
-            extra={[
-              <Input 
-                placeholder=" Votre e-mail"
-                type="email"
-                prefix={<MailOutlined className="site-form-item-icon" />}
-              />,
-              <Input 
-                placeholder=" Votre mot-de-passe"
-                type="password"
-                prefix={<EyeInvisibleOutlined className="site-form-item-icon" />}
-              />,
-              <Button 
-                shape="round">
-                Se connecter
-              </Button>,
-              <Button 
-                shape="round">
-                S'inscrire
-              </Button>,
-            ]}>
-            </PageHeader>
+        {me?.id ? (
+          <div>
+            <PageHeader
+          className="site-page-header"
+          title={`Socialized`}
+          extra={[
+            <Button 
+              shape="round"
+              onClick={handleLogin}>
+              Se connecter
+            </Button>,
+            <Button 
+              shape="round"
+              onClick={handleRegister}>
+              S'inscrire
+            </Button>
+          ]}>
+          </PageHeader>
+          </div>
+        ): (
+          <div>
+            <PageHeader
+              className="site-page-header"
+              title={`Socialized ${me.login}`}
+              extra={[
+                <Button
+                shape="round"
+                onClick={handleDisconnect}>
+                  Se déconnecter
+                </Button>
+              ]}
+            >
+          </PageHeader>
+          </div>
+        )}
         </Col>
         <Divider />
       </Row>
@@ -62,42 +92,21 @@ const Header = () => {
   )
 }
 
-
+/* <header className='header p-relative background'>
+      <h1>AllWalls</h1>
+      <p>Join - Share - Imagine - Create</p>
+      {me?.id ? (
+        <div>
+          <p>{`Bonjour ${me.login}`}</p>
+          <button className='top-right btn-xs' onClick={handleDisconnect}>
+            Deconnexion
+          </button>
+        </div>
+      ) : (
+        <Link className='top-right btn btn-xs' to='/login'>
+          Login
+        </Link>
+      )}
+  </header>
+*/
 export default Header;
-
-/*
-
-<div id="Navbar">
-      <Row justify="start">
-        <Col span={4}>
-
-          <PageHeader
-            className="site-page-header"
-            title="Socialize"
-            extra={[
-              <Input 
-                placeholder=" Votre e-mail"
-                type="email"
-                prefix={<MailOutlined className="site-form-item-icon" />}
-              />,
-              <Input 
-                placeholder=" Votre mot-de-passe"
-                type="password"
-                prefix={<EyeInvisibleOutlined className="site-form-item-icon" />}
-              />,
-              <Button 
-                shape="round">
-                Se connecter
-              </Button>,
-              <Button 
-                shape="round">
-                S'inscrire
-              </Button>,
-            ]}>
-            </PageHeader>
-        </Col>
-        <Divider />
-      </Row>
-    </div>
-
-    */

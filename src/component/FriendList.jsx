@@ -5,7 +5,6 @@ import {
     HeartOutlined,     //Notifications
     MessageOutlined,   //Dms
     LogoutOutlined,    //déconnection
-    SettingOutlined    //Paramètres
 
 } from '@ant-design/icons';
 
@@ -90,16 +89,6 @@ class FriendList extends React.Component {
                             key="3"
                             icon={<MessageOutlined/>}>
                             Messages privés
-                        </Menu.Item>
-                        <Menu.Item
-                            key="4"
-                            icon={<LogoutOutlined/>}>
-                            Se déconnecter
-                        </Menu.Item>
-                        <Menu.Item
-                            key="5"
-                            icon={<SettingOutlined/>}>
-                            Paramètres
                         </Menu.Item>
                     </Menu>  
                     </div>              
