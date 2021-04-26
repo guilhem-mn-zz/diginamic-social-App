@@ -23,19 +23,9 @@ import React from 'react'
 import { PageHeader, Button, Row, Col, Divider } from 'antd';
 
 const Header = () => {
-  const dispatch = useDispatch();
-  const token = useSelector(getToken);
-  const me = useSelector(getMe);
-  let history = useHistory();
+
 
   const handleDisconnect = async () => {
-    const raw = await fetch(`${process.env.REACT_APP_API_URL}/disconnect`, {
-      headers: { Authorization: `Bearer ${token}` },
-    });
-    await raw.json();
-    dispatch(disconnect());
-    localStorage.removeItem("token");
-    history.push("/");
   };
 
   const handleLogin = async () => {
@@ -45,12 +35,11 @@ const Header = () => {
 
   }
 
-
   return (
     <div id="Navbar">
       <Row justify="start">
         <Col span={4}>
-        {me?.id ? (
+       
           <div>
             <PageHeader
           className="site-page-header"
@@ -69,11 +58,11 @@ const Header = () => {
           ]}>
           </PageHeader>
           </div>
-        ): (
+    
           <div>
             <PageHeader
               className="site-page-header"
-              title={`Socialized ${me.login}`}
+              title={`Socialized `}
               extra={[
                 <Button
                 shape="round"
@@ -84,7 +73,7 @@ const Header = () => {
             >
           </PageHeader>
           </div>
-        )}
+
         </Col>
         <Divider />
       </Row>

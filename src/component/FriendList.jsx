@@ -4,7 +4,6 @@ import {
     FormOutlined,      //nouveau post ?
     HeartOutlined,     //Notifications
     MessageOutlined,   //Dms
-    LogoutOutlined,    //déconnection
 
 } from '@ant-design/icons';
 
